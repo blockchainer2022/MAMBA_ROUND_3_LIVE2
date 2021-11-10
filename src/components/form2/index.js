@@ -52,7 +52,7 @@ const Index = ({
       setWalletOpen((prev) => !prev);
     }
     if (account) {
-      buy(Number(claimBalance));
+      buy(Number(claimBalance) !== 0 ? claimBalance : bnb);
     }
   };
 
@@ -87,17 +87,21 @@ const Index = ({
             <span className="block text-xs mt-2 text-gray-500 text-center">
               1 BNB = {total2} MAMBA
             </span> */}
-            {activeStep >= 2 ? (
-              <h2 className="my-20 text-center text-2xl">
-                You Successfully Transferred Your ICO Round 2 Funds.
-              </h2>
-            ) : (
-              <>
-                <p className="mt-14 text-center">Claimabled Balance</p>
-                <h2 className="mb-20 mt-4 text-center text-5xl">
-                  {claimBalance} BNB
+            {claimBalance !== 0 ? (
+              activeStep >= 2 ? (
+                <h2 className="my-20 text-center text-2xl">
+                  You Successfully Transferred Your ICO Round 2 Funds.
                 </h2>
-              </>
+              ) : (
+                <>
+                  <p className="mt-14 text-center">Claimabled Balance</p>
+                  <h2 className="mb-20 mt-4 text-center text-5xl">
+                    {claimBalance} BNB
+                  </h2>
+                </>
+              )
+            ) : (
+              <Field value={bnb} handler={bnbHandler} balance={bnbBalance} />
             )}
 
             {account ? (
@@ -185,7 +189,6 @@ const Field = ({
           placeholder="0"
           value={value}
           onChange={handler}
-          disabled
         />
         <div className="currency">
           <img src={icon} alt="" className="w-6 mr-2" />
