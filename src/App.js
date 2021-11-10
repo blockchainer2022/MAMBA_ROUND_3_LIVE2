@@ -183,7 +183,7 @@ function App() {
       // console.log("", data);
       // setApiClaimData(data.data);
       if (data?.data.is_claimed) {
-        setActiveStep(Number(data.data.step));
+        // setActiveStep(Number(data.data.step));
         setClaimedBalance(Number(data.data.amount));
         contract = new window.web3.eth.Contract(contractAbi2, contractAddress2);
         test = contractAddress2;
