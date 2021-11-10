@@ -115,11 +115,7 @@ const Index = ({
                     {account ? "Claim" : "Connect"}
                   </Button>
                 </div>
-                <div
-                  className={`mt-8 swapbtn ${
-                    activeStep === 1 ? null : "active"
-                  }`}
-                >
+                <div className={`mt-8 swapbtn `}>
                   <Button secondary={true} onClick={submitHandler}>
                     {account ? "Transfer" : "Connect"}
                   </Button>
