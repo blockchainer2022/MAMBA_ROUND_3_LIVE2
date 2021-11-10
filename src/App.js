@@ -40,7 +40,7 @@ function App() {
   const [ethereumCompatibleBrowser, setEthereumCompatibleBrowser] =
     useState(false);
 
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [claimBalance, setClaimBalance] = useState(0);
   const [claimedBalance, setClaimedBalance] = useState(0);
   // const [apiClaimData, setApiClaimData] = useState({});
@@ -159,7 +159,7 @@ function App() {
         console.log("claim data", data);
         // setApiClaimData(data.data);
         if (data?.data.is_claimed) {
-          setActiveStep(Number(data.data.step));
+          // setActiveStep(Number(data.data.step));
           setClaimedBalance(Number(data.data.amount));
         }
       } catch (error) {
@@ -173,7 +173,7 @@ function App() {
   }, [account]);
 
   const loadBlockchainData = async () => {
-    let contract = new window.web3.eth.Contract(contractAbi, contractAddress);
+    let contract = new window.web3.eth.Contract(contractAbi2, contractAddress2);
     let test = contractAddress;
     console.log(test);
     try {
